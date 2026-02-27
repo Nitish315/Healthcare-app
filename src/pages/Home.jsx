@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import Slider from "../components/Slider/Slider";
+import Facility from "../components/Static/Facility/Facility";
+import ShortIntro from "../components/Static/ShortIntro/ShortIntro";
 
 const Home = () => {
   return (
-    <div>
-      <h1>This is Home</h1>
-    </div>
-  )
-}
+    <>
+      <Slider />
+      <Facility/>
+      <ShortIntro/>
+    </>
+  );
+};
 
-export default Home
+export default Home;
