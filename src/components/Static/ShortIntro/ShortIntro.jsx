@@ -16,7 +16,10 @@ const ShortIntro = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
               sunt porro rerum quibusdam eveniet enim officia id commodi,
               consequuntur exercitationem molestiae suscipit alias error
-              voluptate deleniti saepe cum sit provident.
+              voluptate deleniti saepe cum sit provident. Lorem ipsum dolor sit
+              amet consectetur adipisicing elit. Odit omnis quos ut aperiam
+              magni veniam eos consectetur fuga, tempore optio suscipit iusto
+              nobis ipsum non tenetur sit assumenda reiciendis debitis?
             </p>
             <button className="btn btn-primary">Book A Appointment Now</button>
           </div>

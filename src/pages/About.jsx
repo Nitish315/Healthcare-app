@@ -1,9 +1,10 @@
 import React from 'react'
+import ShortIntro from '../components/Static/ShortIntro/ShortIntro'
 
 const About = () => {
   return (
     <div>
-      <h1>This is About</h1>
+     <ShortIntro/>
     </div>
   )
 }
