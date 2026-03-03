@@ -1,0 +1,16 @@
+.review-container{
+    background-color: aliceblue;
+    padding: 40px 0px;
+}
+.review-container .heading-container{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.review-container .icon{
+    color: rgba(231, 182, 4, 0.9);
+}
+.col-md-3:hover{
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,28 @@
+[{
+    "id": "1",
+    "name": "John Doe", 
+    "address": "Local residence",
+    "commentTile": "Great service!",
+    "commentDescription": "best service in town",
+    "rating": 5,
+    "pic": "https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
+},  
+{
+    "id": "2",
+    "name": "Jane Smith", 
+    "address": "City residence",
+    "commentTile": "Highly recommend!",
+    "commentDescription": "very professional and efficient",
+    "rating": 4,
+    "pic": "https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
+},
+{
+    "id": "3",
+    "name": "Alice Johnson", 
+    "address": "Suburban residence",
+    "commentTile": "Fully Satisfied ",
+    "commentDescription": "good experience overall",
+    "rating": 4,
+    "pic": "https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
+}
+]
