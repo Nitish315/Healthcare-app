@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
 
 const NavMenu = () => {
+  const [user, setUser] = useState(true)
   return (
     <>
       <nav className="navbar navbar-expand-lg ">
@@ -56,7 +58,21 @@ const NavMenu = () => {
               Book A Appointment
             </button>
           </form>
-
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            {user ? (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/profile">
+                  My Account
+                </NavLink>
+                </li>
+            ):(
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/login">
+                  Login
+                </NavLink>
+                </li>
+                )}
+          </ul>
         </div>
       </div>
     </nav>
