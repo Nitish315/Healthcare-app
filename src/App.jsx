@@ -12,6 +12,7 @@ import Login from './pages/Auth/Login'
 import AllDoctors from './pages/Doctors/AllDoctors'
 import Appointment from './pages/Doctors/Appointment'
 import UserProfile from './pages/User/UserProfile'
+import MyAppointment from './pages/User/MyAppointment'
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path='/doctors' element={<AllDoctors/>}/>
         <Route path='/doctors/:id' element={<Appointment/>}/>
         <Route path='/profile' element={<UserProfile/>}/>
+        <Route path='/user/appointments' element={<MyAppointment/>}/>
       </Routes>
       <Footer/>
     </div>

@@ -2,3 +2,7 @@
     padding: 2px 5px;
     margin: 10px 0px;
 }
+.editModel select{
+    width: 150px;
+    text-align: center;
+}

@@ -35,7 +35,10 @@ const UserProfile = () => {
               >
                 <i className="fa-solid fa-pen-to-square"></i>Edit Profile
               </button>
-              <button className="btn btn-primary ms-3">
+              <button
+                className="btn btn-primary ms-3"
+                onClick={() => navigate("/user/appointments")}
+              >
                 <i className="fa-solid fa-list"></i> Appointment
               </button>
               <button className="btn btn-danger ms-3" onClick={handlelogout}>
