@@ -1,0 +1,31 @@
+{
+  "name": "healthcareapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitish315/Healthcare-app.git"
+  },
+  "keywords": [],
+  "author": "Nitish Singh",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Nitish315/Healthcare-app/issues"
+  },
+  "homepage": "https://github.com/Nitish315/Healthcare-app#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "morgan": "^1.10.1",
+    "nodemon": "^3.1.14"
+  }
+}
