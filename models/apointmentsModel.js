@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const appointmentSchema = new mongoose.Schema(
   {
-    userid:{
+    userId:{
         type:mongoose.Schema.Types.ObjectId,
         require:true,
         ref:"user"
     },
-    doctorid:{
+    doctorId:{
         type:mongoose.Schema.Types.ObjectId,
         require:true,
         ref:"doctor"
