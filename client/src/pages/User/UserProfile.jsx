@@ -1,12 +1,29 @@
 import { is } from "date-fns/locale";
-import React from "react";
+import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import EditUserProfile from "./EditUserProfile";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/slice/authSlice";
+import { getLoginUserDetails } from "../../redux/actions/authActions";
 const UserProfile = () => {
   const navigate = useNavigate();
   const [isopen, setIsOpen] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const localData = localStorage.getItem("appData");
+    const appData = JSON.parse(localData);
+    if (appData) {
+      const id = appData?.user?._id;
+      dispatch(getLoginUserDetails(id));
+    }
+  }, [dispatch]);
   const handlelogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("appData");
     navigate("/login");
     toast.success("Logout Successfully");
   };
@@ -17,16 +34,22 @@ const UserProfile = () => {
         <div className="row">
           <h4 className="text-center">Manage Your Account & Appointment</h4>
           <div className="col-md-3">
-            <img src="" alt="Profile" className="card p-2" width={200} />
+            <img
+              src={`data:image/jpeg;base64,${user?.image}`}
+              alt="Profile"
+              className="card p-2"
+              width={200}
+              height={250}
+            />
           </div>
           <div className="col-md-8 mt-3">
             <div className="user-container mb-3">
-              <h6>Name:</h6>
-              <h6>Gender:</h6>
-              <h6>DOB:</h6>
-              <h6>Email:</h6>
-              <h6>Phone:</h6>
-              <h6>Address:</h6>
+              <h6>Name:{user?.name}</h6>
+              <h6>Gender:{user?.gender || "NA"}</h6>
+              <h6>DOB:{user?.dob || "NA"}</h6>
+              <h6>Email:{user?.email}</h6>
+              <h6>Phone:{user?.phone || "NA"}</h6>
+              <h6>Address:{user?.address || "NA"}</h6>
             </div>
             <div className="button-container mt-5">
               <button

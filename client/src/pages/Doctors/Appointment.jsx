@@ -5,29 +5,34 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { setHours, setMinutes } from "date-fns";
+import { useDispatch, useSelector } from "react-redux";
+import { getDoctorDetails } from "../../redux/actions/doctorAction";
 
 const Appointment = () => {
   const { id } = useParams();
-  const [docInfo, setDocInfo] = useState({});
+  const [docInfo, setDocInfo] = useState(null);
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
 
-  //find doc
-  const getDocInfo = async () => {
-    let docInfo = await DoctorData.find((doc) => doc.id == id);
-    setDocInfo(docInfo);
-    console.log(docInfo);
-  };
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getDoctorDetails(id))
+  },[dispatch,id])
+  const {doctor}= useSelector(state => state.doctor);
+
+
 
   useEffect(() => {
-    getDocInfo();
-  }, [id]);
+    if(doctor){
+      setDocInfo(doctor);
+    }
+  }, [doctor]);
 
   return (
     <>
       <div className="container docinfo-container">
         <div className="row md-3">
           <div className="col-md-3 d-flex flex-column justify-content-center align-items-center">
-            <img src={docInfo?.pic} alt="docImage" height={200} width={200} />
+            <img src={`data:image/jpeg;base64,${docInfo?.image}`} alt="docImage" height={200} width={200} />
             <h1>{docInfo?.name}</h1>
             <h1
               className={`${docInfo?.available ? "text-success" : "text-danger"}`}

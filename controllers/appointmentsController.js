@@ -75,9 +75,11 @@ export const getAppointmentDetails = async (req, res) => {
     //Find User and Doctor
     const user = await userModel.findOne({ _id: appointment?.userId });
     const doctor = await doctorModel.findOne({ _id: appointment?.doctorId });
+    
     res.status(200).send({
       success: true,
       message: "Appointment Details Fetched Successfully",
+      
       appointmentDetails: {
         clientName: user?.name,
         clientPhone: user?.phone,

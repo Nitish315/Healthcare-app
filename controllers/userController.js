@@ -1,6 +1,9 @@
 import userModel from "../models/userModels.js";
+import doctorModel from "../models/doctorModel.js";
+import apointmentModel from "../models/apointmentsModel.js";
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
+import appointmentModel from "../models/apointmentsModel.js";
 
 export const userRegistor = async (req, res) => {
   try {
@@ -123,7 +126,6 @@ export const updateUser = async (req, res) => {
 };
 
 //password reset
-
 export const updatePassword = async (req, res) => {
   try {
     //user id
@@ -177,6 +179,122 @@ export const updatePassword = async (req, res) => {
     res.status(500).send({
       success: false,
       message: "Error in Update Password",
+      error,
+    });
+  }
+};
+
+//GET ALL USERS
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    res.status(200).send({
+      success: true,
+      message: "All Users",
+      totalCount: users.length,
+      users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Getting User",
+      error,
+    });
+  }
+};
+
+//GET USER  DETAILS & APPOINTMENT DETAILS
+export const getUserDetails = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(404).send({
+        success: false,
+        message: "Please Provide User Id",
+      });
+    }
+    const user = await userModel.findById(id);
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "No User Found With This Id",
+      });
+    }
+
+    //find Appointment
+    const appointments = await apointmentModel.find({ userId: user?._id });
+    res.status(200).send({
+      success: true,
+      message: "Details Fetched Successfully",
+      user,
+      appointments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Getting User",
+      error,
+    });
+  }
+};
+
+//GET STATS
+export const getStats = async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    const doctors = await doctorModel.find({});
+    const appointments = await appointmentModel.aggregate([
+      {$group:{_id:null,totalEarning:{$sum:{$toDouble:'$amount'}}}}
+    ])
+    const total = appointments.length > 0 ? appointments[0].totalEarning : 0
+    res.status(200).send({
+      success: true,
+      message: "All Stats",
+      stats:{
+      totalUsers: users.length,
+      totalDoctors: doctors.length,
+      earnings:total,
+      }
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Getting Stats",
+      error,
+    });
+  }
+};
+
+//GET LOGIN USERS
+export const getLoginUser = async (req, res) => {
+  try {
+    const {id} = req.params
+    if(!id){
+      return res.status(404).send({
+        success:false,
+        message:"Please Provide User Id"
+      })
+    }
+    const user = await userModel.findById(id);
+    if(!user){
+       return res.status(404).send({
+        success:false,
+        message:"No User found"
+      })
+    }
+    res.status(200).send({
+      success: true,
+      message: "Login User Details",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Getting User",
       error,
     });
   }
