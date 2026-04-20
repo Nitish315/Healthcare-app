@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getUserData } from "../../../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
 const NavMenu = () => {
   const dispatch = useDispatch();
-  useEffect(()=>{
+  const navigate = useNavigate();
+  useEffect(() => {
     dispatch(getUserData());
-  },[dispatch])
+  }, [dispatch]);
   const { user } = useSelector((state) => state.auth);
   return (
     <>
@@ -56,14 +58,20 @@ const NavMenu = () => {
             </ul>
 
             <form className="d-flex" role="search">
-              <button className="btn btn-outline-success" type="submit">
+              <button
+                className="btn btn-outline-success"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/doctors");
+                }}
+              >
                 Book A Appointment
               </button>
             </form>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               {user ? (
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/profile">
+                  <NavLink className="nav-link" to="/user/profile">
                     My Account
                   </NavLink>
                 </li>

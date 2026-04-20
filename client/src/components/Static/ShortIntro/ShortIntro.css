@@ -1,35 +1,120 @@
-.intro-container{
-    margin: 30px 0px;
-    overflow: hidden;
-    
+/* Main container */
+.intro-container {
+  margin: 40px 0px;
+  overflow: hidden;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 12px;
 }
-.intro-container .row{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+/* Row alignment */
+.intro-container .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.img-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+
+/* Image container */
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.hos-image{
-    width: 80%;
-    border-radius: 10px;
-    box-shadow: -5px 5px 5px gray;
+
+/* Image styling */
+.hos-image {
+  width: 85%;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
-.intro-container .info-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+
+/* Hover effect on image */
+.hos-image:hover {
+  transform: scale(1.05);
 }
-.info-container h1{
-    font-weight: bold;
-    text-transform: uppercase;
+
+/* Info container */
+.intro-container .info-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
 }
-.info-container h6{
-    color: rgb(0,0,0,0.836);
-    margin-bottom: 30px;
+
+/* Heading */
+.info-container h1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  color: #212529;
+}
+
+/* Subheading */
+.info-container h6 {
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Paragraph */
+.info-container p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* Buttons */
+.info-container .btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Button hover */
+.info-container .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Feature list spacing */
+.info-container .row p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* 🔥 Responsive Design */
+@media (max-width: 992px) {
+  .hos-image {
+    width: 100%;
+  }
+
+  .info-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-container {
+    padding: 20px;
+  }
+
+  .info-container h1 {
+    font-size: 2rem;
+  }
+
+  .info-container p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .info-container h1 {
+    font-size: 1.7rem;
+  }
+
+  .info-container h6 {
+    font-size: 14px;
+  }
 }

@@ -83,7 +83,7 @@ export const getAllAppointments = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       // const res = await API.get(`/appointment/get-user-appointments/${id}`);
-       const res = await API.get(`/appointment/get-user-appointment/${id}`);
+      const res = await API.get(`/appointment/get-user-appointment/${id}`);
       return res.data;
     } catch (error) {
       const message =
@@ -100,13 +100,67 @@ export const cancelStatus = createAsyncThunk(
   "user/cancelStatus",
   async (id, thunkApi) => {
     try {
-      const res = await API.get(`/appointment/cancel/${id}`);
+      const res = await API.post(`/appointment/cancel/${id}`);
       return res.data;
     } catch (error) {
       const message =
         error?.response?.data?.message ||
         error.message ||
         "User Appointment Cancel Error";
+      return thunkApi.rejectWithValue(message);
+    }
+  },
+);
+
+//Reset Password
+export const resetPassword = createAsyncThunk(
+  "user/resetPassword",
+  async ({ id, oldPassword, newPassword }, thunkApi) => {
+    try {
+      const res = await API.patch(`user/update-password/${id}`, {
+        oldPassword,
+        newPassword,
+      });
+      return res.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Update Password Error";
+      return thunkApi.rejectWithValue(message);
+    }
+  },
+);
+
+//Reset Password
+export const bookAppointment = createAsyncThunk(
+  "user/bookAppointment",
+  async (bookingData, thunkApi) => {
+    try {
+      const res = await API.post(`/appointment/create`, bookingData);
+      return res.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Book Appointment Error";
+      return thunkApi.rejectWithValue(message);
+    }
+  },
+);
+
+//Reset Password
+export const sendWebMessage = createAsyncThunk(
+  "user/sendWebMessage",
+  async (msgData, thunkApi) => {
+    try {
+      const res = await API.post(`/webmessage/create`, msgData);
+      return res.data;
+    } catch (error) {
+      const message =
+        error?.response?.data?.message ||
+        error.message ||
+        "Web Message Error";
       return thunkApi.rejectWithValue(message);
     }
   },

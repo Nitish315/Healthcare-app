@@ -1,5 +1,6 @@
 import { buildCreateSlice, createSlice } from "@reduxjs/toolkit";
 import {
+  bookAppointment,
   cancelStatus,
   getAllAppointments,
   getLoginUserDetails,
@@ -7,6 +8,8 @@ import {
   loadToken,
   login,
   register,
+  resetPassword,
+  sendWebMessage,
   updateUserData,
 } from "../actions/authActions";
 
@@ -16,7 +19,7 @@ const authSlice = createSlice({
     loading: false,
     success: false,
     user: null,
-    appointments:null,
+    appointments: null,
     token: null,
     error: null,
   },
@@ -84,6 +87,18 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      //Reset Password
+      .addCase(resetPassword.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(resetPassword.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(resetPassword.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
       //User Appointment
       .addCase(getAllAppointments.pending, (state) => {
         state.loading = true;
@@ -97,6 +112,18 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+      //Book Appointment
+      .addCase(bookAppointment.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(bookAppointment.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(bookAppointment.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
       //User Appointments Cancel
       .addCase(cancelStatus.pending, (state) => {
         state.loading = true;
@@ -106,6 +133,18 @@ const authSlice = createSlice({
         state.success = true;
       })
       .addCase(cancelStatus.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      //Web Message
+      .addCase(sendWebMessage.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(sendWebMessage.fulfilled, (state) => {
+        state.loading = false;
+        state.success = true;
+      })
+      .addCase(sendWebMessage.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

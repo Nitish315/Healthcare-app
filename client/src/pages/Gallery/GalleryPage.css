@@ -1,0 +1,13 @@
+/* Smooth hover effect */
+.react-photo-album--photo {
+  transition: all 0.3s ease;
+}
+
+.react-photo-album--photo:hover {
+  transform: scale(1.04);
+}
+
+/* Lightbox blur effect */
+.yarl__container {
+  backdrop-filter: blur(6px);
+}

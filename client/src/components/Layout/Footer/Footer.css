@@ -1,0 +1,28 @@
+/* Default style */
+.social-icon {
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.2);
+}
+
+/* Individual brand colors on hover */
+.social-icon:hover.fa-facebook {
+  color: #1877f2;
+}
+
+.social-icon:hover.fa-instagram {
+  color: #e4405f;
+}
+
+.social-icon:hover.fa-linkedin {
+  color: #0077b5;
+}
+
+.social-icon:hover.fa-twitter {
+  color: #1da1f2;
+}

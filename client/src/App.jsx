@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { getAllAppointments } from "./redux/actions/authActions";
 import { reset } from "./redux/slice/authSlice";
 import AppointmentDetail from "./pages/User/AppointmentDetail";
+import ResetPassword from "./pages/User/ResetPassword";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,9 +43,10 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/doctors" element={<AllDoctors />} />
         <Route path="/doctors/:id" element={<Appointment />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/user/profile" element={<UserProfile />} />
         <Route path="/user/appointments" element={<MyAppointment />} />
         <Route path="/user/appointments/:id" element={<AppointmentDetail />} />
+        <Route path="/user/reset-password/:id" element={<ResetPassword />} />
       </Routes>
       <Footer />
     </div>
